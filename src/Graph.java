@@ -22,6 +22,17 @@ public class Graph {
         this.NbSommet = ListeAdj.size();
     }
 
+    public void AffichGraph(){
+        System.out.println("Le Graph a "+NbSommet+" Sommets");
+        for (int i=0;i<NbSommet;i++){
+            for (int j=0;j<ListeAdj.get(i).size();j++){
+                if (j == 0){
+
+                }
+            }
+        }
+    }
+
     public void AdSommet(Sommet S) {
         SommetAdj Sfix = new SommetAdj(S);
         ListeAdj.add(S.getSommetId(), new ArrayList<>());

@@ -11,6 +11,10 @@ public class Arc {
         this.S2 = S2;
     }
 
+    public void AfficheArc(){
+        System.out.println(ArcId+" ( "+S1.getSommetNom()+" , "+S2.getSommetNom()+" [ "+ArcVal+" ]");
+    }
+
     public int getArcId() {
         return ArcId;
     }
