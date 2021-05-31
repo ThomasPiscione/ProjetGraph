@@ -12,7 +12,7 @@ public class SommetAdj {
         arc = null;
     }
 
-    public void AfficheSommetdj(){
+    public void AfficheSommetAdj(){
         System.out.println(sommet.getSommetNom()+"("+arc.getArcId()+")");
     }
 

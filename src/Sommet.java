@@ -3,8 +3,9 @@ public class Sommet {
     private String SommetNom;
     private int SommetVal;
 
-    public Sommet(int SommetId, int SommetVal) {
+    public Sommet(int SommetId,String SommetNom, int SommetVal) {
         this.setSommetId(SommetId);
+        this.setSommetNom(SommetNom);
         this.setSommetVal(SommetVal);
     }
 
