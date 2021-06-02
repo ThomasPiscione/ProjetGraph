@@ -24,7 +24,7 @@ public  class Main {
         Arc g = new Arc(7,1,C,D);
         Arc h = new Arc(8,6,D,G);
         Arc i = new Arc(9,1,E,F);
-        Arc j = new Arc(10,2,E,G);
+        Arc j = new Arc(10,2,E,H);
         Arc k = new Arc(11,2,F,G);
         Arc l = new Arc(12,1,F,H);
         Arc m = new Arc(13,1,G,H);
@@ -53,15 +53,15 @@ public  class Main {
         Graf.AdArc(m);
 
         Graf.AffichGraph();
+
+
+
+
     }
 
     Graph Kruskal1(Graph G){
+
         Collections.sort(G.ListeArc);
-        int j = 0;
-        while (!G.ListeArc.isEmpty())
-        {
-            G.ListeArc.get(j).AfficheArc();
-        }
         Graph T = new Graph();
         int i = 0;
         while (T.getNbSommet() < G.getNbSommet()-1)

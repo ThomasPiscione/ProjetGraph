@@ -9,6 +9,7 @@ public class Graph {
 
     public Graph() {
         ListeAdj = new ArrayList<ArrayList<SommetAdj>>();
+        ListeArc = new ArrayList<Arc>();
         setNbSommet(0);
     }
 
@@ -58,19 +59,18 @@ public class Graph {
     }
 
     public  void AdArc(Arc A){
-        /*
-        if(!ListeAdj.get(A.getS1().getSommetId()).contains(A.getS1()))
+
+        if(!(ListeAdj.get(A.getS1().getSommetId()-1).get(0).getSommet() == A.getS1()))
         {
             AdSommet(A.getS1());
-        }*/
+        }
         SommetAdj SA1 = new SommetAdj(A.getS1(), A);
         AdSommetAdj(SA1);
 
-        /*
-        if(!ListeAdj.get(A.getS2().getSommetId()).contains(A.getS2()))
+        if(!(ListeAdj.get(A.getS2().getSommetId()-1).get(0).getSommet() == A.getS2()))
         {
             AdSommet(A.getS2());
-        }*/
+        }
         SommetAdj SA2 = new SommetAdj(A.getS2(), A);
         AdSommetAdj(SA2);
 
