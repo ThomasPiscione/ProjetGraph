@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class Graph {
 
     public ArrayList<ArrayList<SommetAdj>> ListeAdj;
+    public ArrayList<Arc> ListeArc;
     private int NbSommet;
+
 
     public Graph() {
         ListeAdj = new ArrayList<ArrayList<SommetAdj>>();
-        NbSommet = 0;
+        setNbSommet(0);
     }
 
     public Graph(ArrayList<ArrayList<SommetAdj>> ListeAdj) {
@@ -19,12 +21,12 @@ public class Graph {
                 this.ListeAdj.get(i).add(j, ListeAdj.get(i).get(j));
             }
         }
-        this.NbSommet = ListeAdj.size();
+        this.setNbSommet(ListeAdj.size());
     }
 
     public void AffichGraph(){
-        System.out.println("Le Graph a "+NbSommet+" Sommets");
-        for (int i=0;i<NbSommet;i++){
+        System.out.println("Le Graph a "+ getNbSommet() +" Sommets");
+        for (int i = 0; i< getNbSommet(); i++){
             for (int j=0;j<ListeAdj.get(i).size();j++){
                 if (j == 0){
                     ListeAdj.get(i).get(0).getSommet().AfficheSommet();
@@ -39,7 +41,7 @@ public class Graph {
         SommetAdj Sfix = new SommetAdj(S);
         ListeAdj.add(S.getSommetId()-1, new ArrayList<SommetAdj>());
         ListeAdj.get(S.getSommetId()-1).add(0, Sfix);
-        NbSommet++;
+        setNbSommet(getNbSommet() + 1);
     }
 
     public void AdSommetAdj(SommetAdj S) {
@@ -63,6 +65,7 @@ public class Graph {
         }*/
         SommetAdj SA1 = new SommetAdj(A.getS1(), A);
         AdSommetAdj(SA1);
+
         /*
         if(!ListeAdj.get(A.getS2().getSommetId()).contains(A.getS2()))
         {
@@ -71,5 +74,15 @@ public class Graph {
         SommetAdj SA2 = new SommetAdj(A.getS2(), A);
         AdSommetAdj(SA2);
 
+        ListeArc.add(A);
+
+    }
+
+    public int getNbSommet() {
+        return NbSommet;
+    }
+
+    public void setNbSommet(int nbSommet) {
+        NbSommet = nbSommet;
     }
 }

@@ -1,4 +1,4 @@
-public class Arc {
+public class Arc implements Comparable<Arc> {
     private int ArcId;
     private int ArcVal;
     private Sommet S1;
@@ -45,5 +45,9 @@ public class Arc {
 
     public void setS2(Sommet s2) {
         S2 = s2;
+    }
+
+    public int compareTo(Arc A){
+        return (this.getArcVal()-A.getArcVal());
     }
 }
