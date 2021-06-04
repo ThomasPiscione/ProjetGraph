@@ -10,7 +10,7 @@ public class Sommet {
     }
 
     public void AfficheSommet(){
-        System.out.println(SommetNom+" [ "+SommetVal+" ]");
+        System.out.println(SommetNom+" [ "+SommetId+" ]");
     }
 
 
