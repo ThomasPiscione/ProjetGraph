@@ -1,40 +1,67 @@
-public class Sommet {
-    private int SommetId;
-    private String SommetNom;
-    private int SommetVal;
+import java.util.Objects;
 
-    public Sommet(int SommetId,String SommetNom, int SommetVal) {
-        this.setSommetId(SommetId);
-        this.setSommetNom(SommetNom);
-        this.setSommetVal(SommetVal);
+public class Sommet implements Cloneable {
+
+    private final int id;     //id du sommet
+    private final int value;  //valeur du sommet
+    private int degre;        //degré du sommet
+
+    public Sommet(int id, int value) {
+        this.id = id;
+        this.value = value;
+        degre = 0;
     }
 
-    public void AfficheSommet(){
-        System.out.println(SommetNom+" [ "+SommetId+" ]");
+    public Sommet(int id, int value, int degre) {
+        this.id = id;
+        this.value = value;
+        this.degre = degre;
     }
 
-
-    public int getSommetId() {
-        return SommetId;
+    public int getId() {
+        return id;
     }
 
-    public void setSommetId(int sommetId) {
-        SommetId = sommetId;
+    public int getValue() {
+        return value;
     }
 
-    public String getSommetNom() {
-        return SommetNom;
+    public int getDegre() {
+        return degre;
     }
 
-    public void setSommetNom(String sommetNom) {
-        SommetNom = sommetNom;
+    public void setDegre(int d) {
+        degre = d;
     }
 
-    public int getSommetVal() {
-        return SommetVal;
+    public void addArc() {
+        degre++;
     }
 
-    public void setSommetVal(int sommetVal) {
-        SommetVal = sommetVal;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sommet sommet = (Sommet) o;
+        return id == sommet.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Sommet{" +
+                "id=" + id +
+                ", value=" + value +
+                ", degré=" + degre +
+                "}" + '\n';
+    }
+
+    @Override
+    public Sommet clone() {
+        return new Sommet(this.id, this.value, this.degre);
     }
 }

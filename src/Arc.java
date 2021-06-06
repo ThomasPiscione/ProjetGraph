@@ -1,53 +1,70 @@
-public class Arc implements Comparable<Arc> {
-    private int ArcId;
-    private int ArcVal;
-    private Sommet S1;
-    private Sommet S2;
+import java.util.Comparator;
 
-    public Arc(int ArcId, int ArcVal, Sommet S1, Sommet S2) {
-        this.ArcId = ArcId;
-        this.ArcVal = ArcVal;
-        this.S1 = S1;
-        this.S2 = S2;
+public class Arc implements Cloneable {
+    private final int id;
+
+    private final int value;
+
+    private final Sommet s1;
+    private final Sommet s2;
+
+    public Arc(int id, int value, Sommet s1, Sommet s2) {
+        this.id = id;
+        this.value = value;
+        this.s1 = s1;
+        this.s2 = s2;
     }
 
-    public void AfficheArc(){
-        System.out.println(ArcId+" ( "+S1.getSommetNom()+" , "+S2.getSommetNom()+" [ "+ArcVal+" ]");
+    public int GetId() {
+        return id;
     }
 
-    public int getArcId() {
-        return ArcId;
+    public int GetValue() {
+        return value;
     }
 
-    public void setArcId(int arcId) {
-        ArcId = arcId;
+    public int GetIdS1() {
+        return s1.getId();
     }
 
-    public int getArcVal() {
-        return ArcVal;
+    public int GetIdS2() {
+        return s2.getId();
     }
 
-    public void setArcVal(int arcVal) {
-        ArcVal = arcVal;
+    public Sommet GetS1() {
+        return s1;
     }
 
-    public Sommet getS1() {
-        return S1;
+    public Sommet GetS2() {
+        return s2;
     }
 
-    public void setS1(Sommet s1) {
-        S1 = s1;
+    public static Comparator<Arc> SortByPoids = new Comparator<Arc>() {
+        @Override
+        public int compare(Arc a1, Arc a2) {
+            return a1.GetValue() - a2.GetValue();
+        }
+    };
+
+    public static Comparator<Arc> SortByPoidsDecroissant = new Comparator<Arc>() {
+        @Override
+        public int compare(Arc a1, Arc a2) {
+            return a2.GetValue() - a1.GetValue();
+        }
+    };
+
+    @Override
+    public String toString() {
+        return "Arc{" +
+                "id=" + id +
+                ", valeur=" + value +
+                ", s1=" + s1.getId() +
+                ", s2=" + s2.getId() +
+                "}" + '\n';
     }
 
-    public Sommet getS2() {
-        return S2;
-    }
-
-    public void setS2(Sommet s2) {
-        S2 = s2;
-    }
-
-    public int compareTo(Arc A){
-        return (this.getArcVal()-A.getArcVal());
+    @Override
+    public Arc clone() {
+        return new Arc(this.id, this.value, this.s1, this.s2);
     }
 }
